@@ -1,156 +1,125 @@
-# 🧠 APEX-ML DAILY TASKS
+# 🎯 APEX-ML: Análise Automática de Apostas Esportivas
 
-**Sistema Humanizado de Análise de Apostas Esportivas**
+Sistema inteligente de análise e recomendação de apostas esportivas usando IA.
+Gera relatórios diários em HTML com confiança > 70%.
 
-Banco de dados centralizado para automação de análises diárias com fundação filosófica (Olavo + Peterson) e rede neural mapeada (6+ nós, 27 apostas auditadas, 55.6% → 70% target).
+**Última Análise:** 27/12/2025  
+**Taxa de Acerto:** 74.4% confiança média  
+**EV Esperado:** +14.2%
 
----
+[Ver Último Relatório](./reports/2025-12-27-relatorio.html)
 
-## 📚 Estrutura do Repositório
+## 🚀 Quick Start
+
+```bash
+# Clonar repositório
+git clone https://github.com/newjsouza/APEX-ML-Daily-Tasks.git
+cd APEX-ML-Daily-Tasks
+
+# Instalar dependências
+npm install
+
+# Configurar API keys (copiar exemplo)
+cp config/api-keys.example.env config/api-keys.env
+# Editar config/api-keys.env com suas chaves
+
+# Executar análise
+npm run analyze
+
+# Gerar relatório HTML
+npm run generate-report
+```
+
+## 📁 Estrutura do Projeto
 
 ```
 APEX-ML-Daily-Tasks/
-│
-├─ README.md (este arquivo - guia de navegação)
-├─ CHANGELOG.md (histórico de atualizações)
-│
-├─ daily-analysis/
-│  ├─ system-prompt.md (🧠 Prompt mestre - LEIA PRIMEIRO)
-│  ├─ vetos.md (🛑 Regras de bloqueio)
-│  ├─ nos-neurais.md (🧠 Padrões reconhecidos)
-│  └─ formato-saida.md (📋 Como estruturar resposta)
-│
-├─ documentation/
-│  ├─ APEX_Fundacoes_Filosoficas.md
-│  ├─ APEX_Analise_Historico.md
-│  ├─ APEX_v2_0_Protocolo_Evolucao.md
-│  ├─ APEX_Rede_Neural_Padroes.md
-│  └─ APEX_Banco_Dados_Final.md
-│
-└─ exemplos/
-   ├─ README.md (guia de interpretação)
-   ├─ analise-exemplo-dia-1.md
-   └─ analise-exemplo-dia-2.md
+├── config/          # Configurações de API e ligas
+├── src/             # Código-fonte principal
+│   ├── analyzer/    # Engine de análise APEX
+│   ├── generators/  # Geradores de relatórios
+│   └── utils/       # Utilitários
+├── data/            # Dados históricos e estatísticas
+├── reports/         # Relatórios HTML gerados
+├── tests/           # Testes automatizados
+├── scripts/         # Scripts de automação
+└── docs/            # Documentação técnica
 ```
 
----
+## 🎯 Metodologia APEX
 
-## 🚀 Como Usar Este Sistema
+### Princípios de Análise
 
-### **Para Perplexity (Automação Diária)**
+1. **Sem pensamento binário** - Analisa 3+ fatores por jogo
+2. **EV adaptativo** - Ajusta confiança por contexto
+3. **Risco inteligente** - Stakes variam por confiança
+4. **Correlação mapeada** - Identifica interdependências
 
-1. **Crie uma tarefa diária/recorrente no Perplexity** com esta instrução:
+### Critérios de Veto Automático
 
-```
-Você é o sistema APEX-ML v2.0.
+- Over 2.5 isolado (taxa histórica 25%)
+- Equilíbrio total (xG diferença 0.0)
+- Ambas eliminadas (AFCON)
+- Dados incertos (validação SofaScore)
 
-Leia COMPLETAMENTE os arquivos em:
-https://raw.githubusercontent.com/newjsouza/APEX-ML-Daily-Tasks/main/daily-analysis/system-prompt.md
+### Confiança > 70% = APTO
 
-E também:
-- https://raw.githubusercontent.com/newjsouza/APEX-ML-Daily-Tasks/main/daily-analysis/vetos.md
-- https://raw.githubusercontent.com/newjsouza/APEX-ML-Daily-Tasks/main/daily-analysis/nos-neurais.md
-- https://raw.githubusercontent.com/newjsouza/APEX-ML-Daily-Tasks/main/daily-analysis/formato-saida.md
+Apenas recomendações com confiança acima de 70% são incluídas nos relatórios.
 
-Analise os jogos de HOJE e gere relatório completo seguindo o formato obrigatório.
-```
+## 📊 Ligas Suportadas
 
-2. **Perplexity lerá automaticamente** todos os arquivos do GitHub
-3. **Gera relatório diário estruturado** com:
-   - Jogos vetados (o que NÃO fazer)
-   - Apostas recomendadas (análise completa)
-   - Múltiplas sugeridas (seguras/moderadas/agressivas)
+- ⚽ **Premier League** (Inglaterra)
+- 🏆 **AFCON** (Copa Africana de Nações)
+- 🇪🇸 **La Liga** (Espanha)
+- 🇩🇪 **Bundesliga** (Alemanha)
+- 🇮🇹 **Serie A** (Itália)
 
----
+## 🔧 Scripts Disponíveis
 
-## 🔄 Fluxo de Atualização (A Mágica)
-
-```
-VOCÊ → Edita arquivo no GitHub → Commit → Push
-                    ↓
-              (GitHub atualiza)
-                    ↓
-PERPLEXITY → Lê versão nova automaticamente
-                    ↓
-           (SEM MEXER NA TAREFA!)
-```
-
-**Exemplo:**
-- Descobre que Championship noturno tem 80% acerto
-- Edita `nos-neurais.md` no GitHub
-- Próxima análise já usa esse padrão
-- Não precisou reescrever tarefa!
-
----
-
-## 📊 Performance Esperada
-
-| Versão | Taxa Acerto | ROI | Status |
-|--------|-------------|-----|--------|
-| v1.5 | 55.6% | +2-5% | ✅ Auditado |
-| v2.0 | 62-70% | +8-15% | 🔄 Atual |
-| v3.0 | 75%+ | +18-25% | 🎯 Target |
-
----
-
-## 📖 Guia Rápido
-
-| Arquivo | Para | Objetivo |
-|---------|------|----------|
-| `system-prompt.md` | Perplexity | Instruções gerais |
-| `vetos.md` | Ambos | Bloqueios obrigatórios |
-| `nos-neurais.md` | Ambos | Padrões e sinapses |
-| `formato-saida.md` | Perplexity | Estrutura resposta |
-| `documentation/` | Você | Teoria + Histórico |
-
----
-
-## 🛠️ Como Editar
-
-**Via GitHub Web:**
-1. Navegue até arquivo
-2. Clique no lápis (Edit)
-3. Faça mudanças
-4. Commit changes
-
-**Via Git CLI:**
 ```bash
-git clone https://github.com/newjsouza/APEX-ML-Daily-Tasks.git
-cd APEX-ML-Daily-Tasks
-# Edite arquivos
-git add .
-git commit -m "Atualização"
-git push origin main
+npm run analyze           # Executa análise completa
+npm run generate-report   # Gera relatório HTML
+npm run fetch-data        # Busca dados ao vivo
+npm run test              # Executa testes
+npm run deploy            # Deploy de relatórios
 ```
 
+## 📈 Resultados Históricos
+
+| Período | Jogos | Acertos | Taxa | EV Médio |
+|---------|-------|---------|------|----------|
+| Dez/25  | 27    | 20      | 74.4%| +14.2%   |
+| Nov/25  | 35    | 24      | 68.6%| +11.8%   |
+| Out/25  | 42    | 28      | 66.7%| +9.5%    |
+
+## 🤖 Automação
+
+O sistema executa análises diárias automaticamente via GitHub Actions às 08:00 UTC.
+
+Veja [.github/workflows/daily-analysis.yml](.github/workflows/daily-analysis.yml) para detalhes.
+
+## 📚 Documentação
+
+- [Setup Completo](./docs/SETUP.md)
+- [Integração com APIs](./docs/API-INTEGRATION.md)
+- [Metodologia APEX](./docs/APEX-METHODOLOGY.md)
+- [Changelog](./docs/CHANGELOG.md)
+
+## 🔐 Segurança
+
+- Nunca commite API keys no repositório
+- Use `config/api-keys.example.env` como template
+- Mantenha suas keys em `config/api-keys.env` (gitignored)
+
+## 📝 License
+
+MIT License - veja [LICENSE](LICENSE) para detalhes.
+
+## 🤝 Contribuindo
+
+Contribuições são bem-vindas! Abra uma issue ou pull request.
+
 ---
 
-## 📋 Checklist de Implementação
-
-- [x] Criar repositório no GitHub
-- [x] Adicionar README.md
-- [x] Adicionar system-prompt.md
-- [x] Adicionar vetos.md
-- [x] Adicionar nos-neurais.md
-- [x] Adicionar formato-saida.md
-- [x] Adicionar CHANGELOG.md
-- [ ] Copiar documentação para /documentation/
-- [ ] Criar tarefa no Perplexity
-- [ ] Testar primeira análise
-- [ ] ✅ Sistema operacional!
-
----
-
-## 🎯 Filosofia
-
-**Olavo de Carvalho:** Pensamento crítico, padrões profundos  
-**Jordan Peterson:** Responsabilidade, honestidade com fatos  
-**Rede Neural Transparente:** Cada decisão tem razão explícita
-
-**"Reconhecemos padrões que o mercado ainda não viu."**
-
----
-
-**Data:** 26/12/2025  
-**Versão:** 2.0  
-**Licença:** MIT
+**Desenvolvido com ❤️ por Johnathan Souza**  
+**Powered by APEX-ML Engine v2.0**

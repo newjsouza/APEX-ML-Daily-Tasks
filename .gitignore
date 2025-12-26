@@ -1,0 +1,51 @@
+# Dependencies
+node_modules/
+
+# Environment Variables
+.env
+.env.local
+api-keys.json
+config/api-keys.env
+
+# Logs
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Reports Archive
+reports/archive/
+
+# Data Cache
+data/cache/
+data/temp/
+
+# OS Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Build
+build/
+dist/
+
+# Testing
+coverage/
+.nyc_output/
+
+# Misc
+*.bak
+*.tmp
+.cache/
