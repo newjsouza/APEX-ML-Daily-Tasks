@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APEX Monitor - Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0f1419;
+            color: #ecf0f1;
+            line-height: 1.6;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #32B8C6 0%, #1d7480 100%);
+            padding: 32px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header h1 {
+            font-size: 2.2em;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .header-meta {
+            display: flex;
+            gap: 24px;
+            font-size: 0.95em;
+            opacity: 0.95;
+            flex-wrap: wrap;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 32px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .card {
+            background: #1a1f28;
+            border: 1px solid #34495e;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+            transform: translateY(-2px);
+        }
+
+        .card-title {
+            font-size: 0.85em;
+            color: #bdc3c7;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .card-value {
+            font-size: 2em;
+            font-weight: 700;
+            color: #32B8C6;
+            margin-bottom: 8px;
+        }
+
+        .card-subtitle {
+            font-size: 0.9em;
+            color: #bdc3c7;
+        }
+
+        .section {
+            margin-bottom: 32px;
+        }
+
+        .section-title {
+            font-size: 1.8em;
+            font-weight: 700;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid #32B8C6;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .status-box {
+            background: #1a1f28;
+            border-left: 4px solid #32B8C6;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+
+        .status-box h2 {
+            font-size: 1.3em;
+            margin-bottom: 16px;
+            color: #32B8C6;
+        }
+
+        .status-box p {
+            color: #bdc3c7;
+            line-height: 1.8;
+        }
+
+        .analysis-card {
+            background: #1a1f28;
+            border-left: 4px solid #2ecc71;
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .analysis-title {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #32B8C6;
+            margin-bottom: 12px;
+        }
+
+        .analysis-meta {
+            font-size: 0.9em;
+            color: #bdc3c7;
+            margin-bottom: 16px;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #bdc3c7;
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border: 4px solid #34495e;
+            border-top-color: #32B8C6;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .error {
+            background: #e74c3c;
+            color: white;
+            padding: 16px;
+            border-radius: 12px;
+            margin-bottom: 24px;
+        }
+
+        .footer {
+            background: #1a1f28;
+            border-top: 1px solid #34495e;
+            padding: 32px;
+            margin-top: 32px;
+            text-align: center;
+            color: #bdc3c7;
+            font-size: 0.9em;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 16px;
+        }
+
+        thead {
+            background: #252d38;
+        }
+
+        th {
+            padding: 16px;
+            text-align: left;
+            font-weight: 600;
+            color: #32B8C6;
+            border-bottom: 2px solid #34495e;
+        }
+
+        td {
+            padding: 16px;
+            border-bottom: 1px solid #34495e;
+        }
+
+        tbody tr:hover {
+            background: #252d38;
+        }
+
+        a {
+            color: #32B8C6;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 16px;
+            }
+
+            .header h1 {
+                font-size: 1.6em;
+            }
+
+            .header-meta {
+                gap: 12px;
+                font-size: 0.85em;
+            }
+
+            .section-title {
+                font-size: 1.3em;
+            }
+
+            table {
+                font-size: 0.85em;
+            }
+
+            th, td {
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <h1>🎯 APEX Monitor</h1>
+            <div class="header-meta">
+                <div><strong>Status:</strong> <span id="status">Carregando...</span></div>
+                <div><strong>Última Atualização:</strong> <span id="lastUpdate">--</span></div>
+                <div><strong>Servidor:</strong> <span id="server">Verificando...</span></div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="section">
+            <div class="grid">
+                <div class="card">
+                    <div class="card-title">✅ Análises Totais</div>
+                    <div class="card-value" id="totalAnalyses">--</div>
+                    <div class="card-subtitle">Armazenadas no repositório</div>
+                </div>
+                <div class="card">
+                    <div class="card-title">📈 Tamanho Médio</div>
+                    <div class="card-value" id="avgSize">--</div>
+                    <div class="card-subtitle">Por análise</div>
+                </div>
+                <div class="card">
+                    <div class="card-title">⏱️ Uptime</div>
+                    <div class="card-value" id="uptime">--</div>
+                    <div class="card-subtitle">Tempo online</div>
+                </div>
+                <div class="card">
+                    <div class="card-title">🔄 Cache</div>
+                    <div class="card-value" id="cacheRate">--</div>
+                    <div class="card-subtitle">Taxa de acerto</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="status-box">
+                <h2>📊 Monitor Status</h2>
+                <p id="statusMessage">Conectando ao servidor...</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-title">
+                <span>📰</span>
+                Última Análise
+            </div>
+            <div id="latestAnalysis">
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <p style="margin-top: 16px;">Buscando dados...</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="section-title">
+                <span>📚</span>
+                Análises Recentes
+            </div>
+            <div id="recentAnalyses">
+                <div class="loading">
+                    <div class="spinner"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>🔗 <strong>GitHub:</strong> newjsouza/APEX-ML-Daily-Tasks</p>
+        <p style="margin-top: 12px; font-size: 0.85em; color: #7f8c8d;">
+            APEX Monitor v1.0 | Atualizar a cada 5 minutos
+        </p>
+    </footer>
+
+    <script>
+        const API_BASE = 'http://localhost:3000/api';
+        const REFRESH_INTERVAL = 5 * 60 * 1000;
+
+        async function loadDashboard() {
+            try {
+                await Promise.all([
+                    loadStats(),
+                    loadLatestAnalysis(),
+                    loadRecentAnalyses(),
+                    checkHealth()
+                ]);
+            } catch (error) {
+                showError('Erro ao carregar dashboard: ' + error.message);
+            }
+        }
+
+        async function checkHealth() {
+            try {
+                const response = await fetch(`${API_BASE}/health`);
+                const data = await response.json();
+                
+                document.getElementById('status').textContent = '✅ Online';
+                document.getElementById('server').textContent = 'Conectado';
+                document.getElementById('statusMessage').innerHTML = `
+                    <strong>✅ Servidor Conectado</strong><br>
+                    Uptime: ${formatSeconds(data.uptime)}<br>
+                    Repositório: ${data.github}
+                `;
+            } catch (error) {
+                document.getElementById('status').textContent = '❌ Offline';
+                showError('Servidor não respondendo');
+            }
+        }
+
+        async function loadStats() {
+            try {
+                const response = await fetch(`${API_BASE}/stats`);
+                const data = await response.json();
+                const stats = data.stats;
+
+                document.getElementById('totalAnalyses').textContent = stats.totalAnalyses || '--';
+                document.getElementById('avgSize').textContent = formatBytes(stats.averageFileSize);
+                document.getElementById('uptime').textContent = formatSeconds(stats.serverUptime);
+                document.getElementById('cacheRate').textContent = stats.cacheHitRate;
+                document.getElementById('lastUpdate').textContent = new Date(stats.lastUpdate).toLocaleString('pt-BR');
+            } catch (error) {
+                console.error('Erro ao carregar stats:', error);
+            }
+        }
+
+        async function loadLatestAnalysis() {
+            try {
+                const response = await fetch(`${API_BASE}/latest-analysis`);
+                const data = await response.json();
+                const analysis = data.data;
+
+                const html = `
+                    <div class="analysis-card">
+                        <div class="analysis-title">
+                            ${analysis.filename || 'Última Análise'}
+                        </div>
+                        <div class="analysis-meta">
+                            📅 ${new Date(analysis.date).toLocaleString('pt-BR')}
+                        </div>
+                        ${analysis.preview ? `
+                            <div style="background: #252d38; padding: 16px; border-radius: 8px; margin: 16px 0; font-size: 0.9em; color: #bdc3c7; max-height: 200px; overflow-y: auto;">
+                                ${analysis.preview.replace(/</g, '&lt;').replace(/>/g, '&gt;')}
+                            </div>
+                        ` : ''}
+                        <div>
+                            <a href="${analysis.url}" target="_blank">
+                                🔗 Ver no GitHub →
+                            </a>
+                        </div>
+                    </div>
+                `;
+                document.getElementById('latestAnalysis').innerHTML = html;
+            } catch (error) {
+                console.error('Erro ao carregar última análise:', error);
+            }
+        }
+
+        async function loadRecentAnalyses() {
+            try {
+                const response = await fetch(`${API_BASE}/analyses?page=1`);
+                const data = await response.json();
+                const items = data.data.items;
+
+                let html = '<table><thead><tr><th>Arquivo</th><th>Tamanho</th><th>Atualizado</th><th>Ação</th></tr></thead><tbody>';
+                
+                items.forEach(item => {
+                    html += `
+                        <tr>
+                            <td>${item.name}</td>
+                            <td>${formatBytes(item.size)}</td>
+                            <td>${new Date(item.updated).toLocaleString('pt-BR')}</td>
+                            <td><a href="${item.url}" target="_blank">Abrir</a></td>
+                        </tr>
+                    `;
+                });
+
+                html += '</tbody></table>';
+                document.getElementById('recentAnalyses').innerHTML = html;
+            } catch (error) {
+                console.error('Erro ao carregar análises:', error);
+            }
+        }
+
+        function showError(message) {
+            const errorEl = document.createElement('div');
+            errorEl.className = 'error';
+            errorEl.textContent = '⚠️ ' + message;
+            document.querySelector('main').insertBefore(errorEl, document.querySelector('.section'));
+        }
+
+        function formatBytes(bytes) {
+            if (!bytes) return '--';
+            const kb = Math.round(bytes / 1024);
+            if (kb < 1024) return kb + ' KB';
+            return (kb / 1024).toFixed(2) + ' MB';
+        }
+
+        function formatSeconds(seconds) {
+            if (!seconds) return '--';
+            const hours = Math.floor(seconds / 3600);
+            const minutes = Math.floor((seconds % 3600) / 60);
+            const secs = Math.floor(seconds % 60);
+            return `${hours}h ${minutes}m ${secs}s`;
+        }
+
+        loadDashboard();
+        setInterval(loadDashboard, REFRESH_INTERVAL);
+        console.log('✅ APEX Monitor carregado');
+    </script>
+</body>
+</html>
