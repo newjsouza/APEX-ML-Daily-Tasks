@@ -1,0 +1,61 @@
+{
+  "leagues": {
+    "PL": {
+      "id": "premier-league",
+      "name": "Premier League",
+      "country": "England",
+      "matches_per_round": 10,
+      "season": "2024-2025",
+      "historical_accuracy": 0.46,
+      "api_id": "39",
+      "timezone": "Europe/London",
+      "active": true
+    },
+    "AFCON": {
+      "id": "afcon",
+      "name": "Africa Cup of Nations",
+      "country": "Africa",
+      "matches_per_round": 4,
+      "season": "2025",
+      "historical_accuracy": 0.72,
+      "api_id": "960",
+      "timezone": "Africa/Cairo",
+      "active": true
+    },
+    "LALIGA": {
+      "id": "la-liga",
+      "name": "La Liga",
+      "country": "Spain",
+      "matches_per_round": 10,
+      "season": "2024-2025",
+      "historical_accuracy": 0.52,
+      "api_id": "140",
+      "timezone": "Europe/Madrid",
+      "active": true
+    },
+    "BUNDESLIGA": {
+      "id": "bundesliga",
+      "name": "Bundesliga",
+      "country": "Germany",
+      "matches_per_round": 9,
+      "season": "2024-2025",
+      "historical_accuracy": 0.48,
+      "api_id": "78",
+      "timezone": "Europe/Berlin",
+      "active": true
+    },
+    "SERIEA": {
+      "id": "serie-a",
+      "name": "Serie A",
+      "country": "Italy",
+      "matches_per_round": 10,
+      "season": "2024-2025",
+      "historical_accuracy": 0.50,
+      "api_id": "135",
+      "timezone": "Europe/Rome",
+      "active": true
+    }
+  },
+  "last_updated": "2025-12-26",
+  "version": "2.0"
+}

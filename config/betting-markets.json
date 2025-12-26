@@ -1,0 +1,75 @@
+{
+  "markets": {
+    "1X2": {
+      "name": "Match Result",
+      "description": "Resultado final do jogo",
+      "options": ["1", "X", "2"],
+      "min_confidence": 0.70,
+      "max_stake_percentage": 0.15,
+      "priority": 1,
+      "active": true
+    },
+    "BTTS": {
+      "name": "Both Teams to Score",
+      "description": "Ambas equipes marcam",
+      "options": ["Yes", "No"],
+      "min_confidence": 0.68,
+      "max_stake_percentage": 0.12,
+      "priority": 2,
+      "active": true
+    },
+    "OVER_UNDER": {
+      "name": "Over/Under Goals",
+      "description": "Total de gols acima/abaixo",
+      "thresholds": [1.5, 2.5, 3.5],
+      "min_confidence": 0.72,
+      "max_stake_percentage": 0.10,
+      "priority": 3,
+      "active": true,
+      "veto_conditions": [
+        "isolated_over_2_5"
+      ]
+    },
+    "DOUBLE_CHANCE": {
+      "name": "Double Chance",
+      "description": "Dupla chance",
+      "options": ["1X", "12", "X2"],
+      "min_confidence": 0.65,
+      "max_stake_percentage": 0.18,
+      "priority": 4,
+      "active": true
+    },
+    "ASIAN_HANDICAP": {
+      "name": "Asian Handicap",
+      "description": "Handicap asiático",
+      "min_confidence": 0.75,
+      "max_stake_percentage": 0.12,
+      "priority": 5,
+      "active": false
+    }
+  },
+  "veto_rules": {
+    "isolated_over_2_5": {
+      "description": "Over 2.5 isolado sem outros mercados",
+      "historical_accuracy": 0.25,
+      "action": "BLOCK"
+    },
+    "total_balance": {
+      "description": "xG diferença igual a 0.0",
+      "threshold": 0.0,
+      "action": "BLOCK"
+    },
+    "afcon_btts": {
+      "description": "Ambas marcam eliminadas em AFCON",
+      "leagues": ["AFCON"],
+      "market": "BTTS",
+      "action": "BLOCK"
+    },
+    "uncertain_data": {
+      "description": "Dados não validados via SofaScore",
+      "action": "REVIEW"
+    }
+  },
+  "last_updated": "2025-12-26",
+  "version": "2.0"
+}
