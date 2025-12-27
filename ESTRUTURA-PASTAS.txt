@@ -1,0 +1,88 @@
+ESTRUTURA DO REPOSITÓRIO APEX-ML-Daily-Tasks
+=============================================
+
+APEX-ML-Daily-Tasks/
+│
+├── 📁 dados-analises/                    # Histórico de análises esportivas
+│   └── 📁 2025-12-27/                   # Análises por data
+│       ├── APEX27122025COMXGACUMULADO.html    # Relatório HTML visual
+│       ├── DADOSXGUNDERSTAT27122025.json      # Dados estruturados JSON
+│       └── ATUALIZARGITHUB.md                 # Documentação de atualização
+│
+├── 📁 monitor/                           # Sistema web de monitoramento
+│   ├── 📁 backend/                      # API Node.js/Express
+│   │   ├── server.js                    # Servidor principal
+│   │   ├── package.json                 # Dependências Node.js
+│   │   └── .env                         # Variáveis de ambiente
+│   │
+│   └── 📁 public/                       # Interface web frontend
+│       └── index.html                   # Dashboard do monitor
+│
+├── 📁 _pycache__/                        # Cache Python (ignorar)
+│
+├── 📁 config/                            # Configurações do projeto
+│
+├── 📁 daily-analysis/                    # Análises diárias
+│
+├── 📁 exemplos/                          # Exemplos de uso
+│
+├── 📁 src/                               # Código-fonte principal
+│
+├── 📄 README.md                          # Documentação principal
+├── 📄 QUICK-START.md                     # Guia de início rápido
+├── 📄 TROUBLESHOOTING.md                 # Resolução de problemas
+├── 📄 .env.example                       # Exemplo de variáveis
+├── 📄 .gitignore                         # Arquivos ignorados pelo Git
+├── 📄 integracao-gerador.js              # Script de geração de estruturas
+├── 📄 ESTRUTURA-PASTAS.txt               # Este arquivo
+├── 📄 CHANGELOG.md                       # Histórico de mudanças
+├── 📄 INDICE_COMPLETO.md                 # Índice completo do projeto
+
+═══════════════════════════════════════════════════════════════
+
+DESCRIÇÃO DOS ARQUIVOS PRINCIPAIS
+
+📊 Dados de Análises:
+─────────────────────
+- APEX*_COM_XG_ACUMULADO.html: Relatório visual interativo com gráficos
+- DADOS_XG_UNDERSTAT_*.json: Dados estruturados para processamento
+- ATUALIZAR_GITHUB.md: Instruções de atualização
+
+🌐 Monitor Web:
+───────────────
+- server.js: API REST Express
+- index.html: Interface web responsiva
+- package.json: Gerenciador de dependências
+
+📝 Documentação:
+────────────────
+- README.md: Guia principal do projeto
+- QUICK-START.md: Início rápido em 5 minutos
+- TROUBLESHOOTING.md: Resolução de erros comuns
+- .env.example: Template de variáveis
+
+⚙️ Utilitários:
+───────────────
+- integracao-gerador.js: Gerador de estruturas automático
+- .gitignore: Arquivo/pastas ignoradas
+- ESTRUTURA-PASTAS.txt: Este arquivo
+
+═══════════════════════════════════════════════════════════════
+
+COMO ADICIONAR NOVOS DADOS
+
+1. Use o script de geração:
+   node integracao-gerador.js 2025-12-28
+
+2. Ou crie manualmente:
+   mkdir dados-analises/2025-12-28
+   Adicione: DADOS_XG_UNDERSTAT_28122025.json
+   Adicione: APEX28122025COMXGACUMULADO.html
+   Adicione: ATUALIZARGITHUB.md
+
+3. Commit e push:
+   git add .
+   git commit -m 'feat: Add APEX analysis for 2025-12-28'
+   git push origin main
+
+═══════════════════════════════════════════════════

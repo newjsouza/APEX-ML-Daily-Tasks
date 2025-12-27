@@ -1,0 +1,87 @@
+{
+  "datacoleta": "2025-12-27T22:00:00Z",
+  "versao": "1.0.0",
+  "competicoes": [
+    {"id": "BR1", "nome": "Campeonato Brasileiro - Série A", "rodada": 34, "pais": "Brasil"},
+    {"id": "CL1", "nome": "UEFA Champions League", "fase": "Fase de Grupos", "pais": "Europa"}
+  ],
+  "jogos": [
+    {
+      "id": "BR134001",
+      "data": "2025-12-27",
+      "horario": "19:00",
+      "competicao": "BR1",
+      "rodada": 34,
+      "timecasa": {"nome": "Botafogo", "abreviacao": "BOT", "posicaotabela": 2, "id": "BOT001"},
+      "timevisitante": {"nome": "Palmeiras", "abreviacao": "PAL", "posicaotabela": 1, "id": "PAL001"},
+      "placarfinal": {"casa": 1, "visitante": 2, "status": "finalizado"},
+      "xgacumulado": {"casa": 1.85, "visitante": 2.43, "diferenca": -0.58},
+      "estatisticas": {
+        "casa": {"possebola": 45.2, "passescertos": 312, "passestotal": 426, "chutes": 12, "chutesnoalvo": 4, "escanteios": 6, "faltas": 14, "cartoesamarelos": 2, "cartoesvermelhos": 0, "desarmes": 28, "interceptacoes": 15},
+        "visitante": {"possebola": 54.8, "passescertos": 387, "passestotal": 488, "chutes": 14, "chutesnoalvo": 6, "escanteios": 8, "faltas": 12, "cartoesamarelos": 1, "cartoesvermelhos": 0, "desarmes": 32, "interceptacoes": 18}
+      },
+      "momentoscriticos": [
+        {"minuto": 23, "tipo": "gol", "time": "visitante", "jogador": "Estvo", "xg": 0.68, "tipojogada": "cruzamento"},
+        {"minuto": 45, "tipo": "gol", "time": "casa", "jogador": "Tiquinho", "xg": 0.52, "tipojogada": "passe longo"},
+        {"minuto": 72, "tipo": "gol", "time": "visitante", "jogador": "Veiga", "xg": 0.81, "tipojogada": "contra-ataque"}
+      ]
+    },
+    {
+      "id": "BR134002",
+      "data": "2025-12-27",
+      "horario": "21:00",
+      "competicao": "BR1",
+      "rodada": 34,
+      "timecasa": {"nome": "Flamengo", "abreviacao": "FLA", "posicaotabela": 3, "id": "FLA001"},
+      "timevisitante": {"nome": "Internacional", "abreviacao": "INT", "posicaotabela": 5, "id": "INT001"},
+      "placarfinal": {"casa": 2, "visitante": 1, "status": "finalizado"},
+      "xgacumulado": {"casa": 2.15, "visitante": 1.52, "diferenca": 0.63},
+      "estatisticas": {
+        "casa": {"possebola": 58.3, "passescertos": 421, "passestotal": 512, "chutes": 16, "chutesnoalvo": 7, "escanteios": 9, "faltas": 11, "cartoesamarelos": 3, "cartoesvermelhos": 0, "desarmes": 24, "interceptacoes": 12},
+        "visitante": {"possebola": 41.7, "passescertos": 289, "passestotal": 368, "chutes": 11, "chutesnoalvo": 5, "escanteios": 5, "faltas": 13, "cartoesamarelos": 2, "cartoesvermelhos": 1, "desarmes": 31, "interceptacoes": 19}
+      },
+      "momentoscriticos": [
+        {"minuto": 18, "tipo": "gol", "time": "casa", "jogador": "Pedro", "xg": 0.75, "tipojogada": "cruzamento na area"},
+        {"minuto": 39, "tipo": "gol", "time": "visitante", "jogador": "Edenilson", "xg": 0.48, "tipojogada": "falta"},
+        {"minuto": 85, "tipo": "gol", "time": "casa", "jogador": "Bruno Henrique", "xg": 0.92, "tipojogada": "passe curto na area"}
+      ]
+    },
+    {
+      "id": "CL1GF001",
+      "data": "2025-12-28",
+      "horario": "20:00",
+      "competicao": "CL1",
+      "fase": "Fase de Grupos",
+      "timecasa": {"nome": "Manchester City", "abreviacao": "MCI", "pais": "Inglaterra", "id": "MCI001"},
+      "timevisitante": {"nome": "PSV Eindhoven", "abreviacao": "PSV", "pais": "Holanda", "id": "PSV001"},
+      "placarfinal": {"casa": 3, "visitante": 0, "status": "finalizado"},
+      "xgacumulado": {"casa": 3.42, "visitante": 0.65, "diferenca": 2.77},
+      "estatisticas": {
+        "casa": {"possebola": 72.1, "passescertos": 568, "passestotal": 678, "chutes": 18, "chutesnoalvo": 9, "escanteios": 7, "faltas": 8, "cartoesamarelos": 1, "cartoesvermelhos": 0, "desarmes": 18, "interceptacoes": 8},
+        "visitante": {"possebola": 27.9, "passescertos": 198, "passestotal": 289, "chutes": 7, "chutesnoalvo": 2, "escanteios": 3, "faltas": 12, "cartoesamarelos": 2, "cartoesvermelhos": 0, "desarmes": 35, "interceptacoes": 22}
+      },
+      "momentoscriticos": [
+        {"minuto": 12, "tipo": "gol", "time": "casa", "jogador": "De Bruyne", "xg": 0.88, "tipojogada": "passe curto"},
+        {"minuto": 34, "tipo": "gol", "time": "casa", "jogador": "Haaland", "xg": 0.95, "tipojogada": "contra-ataque"},
+        {"minuto": 68, "tipo": "gol", "time": "casa", "jogador": "Foden", "xg": 0.78, "tipojogada": "jogada individual"}
+      ]
+    }
+  ],
+  "metricasagregadas": {
+    "totaljogosanalisados": 3,
+    "totalgols": 9,
+    "xgtotal": 10.98,
+    "eficienciageral": 0.82,
+    "taxaconversaomedia": 0.34,
+    "desvioxgvsgols": 1.78
+  },
+  "tendencias": [
+    {"analise": "Palmeiras e Flamengo apresentaram desempenho consistente com conversão acima da média", "confianca": 0.87},
+    {"analise": "Botafogo criou poucas chances mas sofreu por falta de eficiência defensiva", "confianca": 0.74},
+    {"analise": "Manchester City dominou estatisticamente com XG muito superior ao adversário", "confianca": 0.95}
+  ],
+  "alertas": [
+    {"tipo": "oportunidade", "mensagem": "Palmeiras em ascensão - 3 vitórias seguidas com padrão ofensivo consistente", "confianca": 0.85},
+    {"tipo": "risco", "mensagem": "Botafogo começou a sofrer mais defensivamente nas últimas rodadas", "confianca": 0.72}
+  ]
+}

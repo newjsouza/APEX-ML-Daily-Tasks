@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>APEX Analytics - Análise XG Acumulado 27/12/2025</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        header {
+            background: rgba(26, 26, 46, 0.8);
+            border-left: 4px solid #00d4ff;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+        }
+        h1 {
+            color: #00d4ff;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+        .timestamp {
+            color: #aaa;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .card {
+            background: rgba(22, 33, 62, 0.8);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 8px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        .card:hover {
+            border-color: rgba(0, 212, 255, 0.5);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.1);
+            transform: translateY(-2px);
+        }
+        .card-title {
+            font-size: 14px;
+            color: #00d4ff;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        .match {
+            background: rgba(22, 33, 62, 0.8);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            backdrop-filter: blur(10px);
+        }
+        .match-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .match-title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #00d4ff;
+        }
+        .match-info {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .info-box {
+            text-align: center;
+            padding: 10px;
+            background: rgba(0, 212, 255, 0.05);
+            border-radius: 6px;
+            border: 1px solid rgba(0, 212, 255, 0.1);
+        }
+        .info-label {
+            font-size: 11px;
+            color: #999;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+        .info-value {
+            font-size: 18px;
+            font-weight: bold;
+            color: #00d4ff;
+        }
+        .teams-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .team-stats {
+            background: rgba(0, 212, 255, 0.05);
+            padding: 15px;
+            border-radius: 6px;
+            border: 1px solid rgba(0, 212, 255, 0.1);
+        }
+        .team-name {
+            font-size: 14px;
+            font-weight: bold;
+            color: #00d4ff;
+            margin-bottom: 12px;
+        }
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+            font-size: 12px;
+        }
+        .stat-row:last-child {
+            border-bottom: none;
+        }
+        .stat-label {
+            color: #aaa;
+        }
+        .stat-value {
+            color: #00d4ff;
+            font-weight: bold;
+        }
+        .xg-comparison {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            padding: 20px;
+            background: rgba(0, 212, 255, 0.05);
+            border-radius: 8px;
+            margin-top: 15px;
+            border: 2px solid rgba(0, 212, 255, 0.2);
+        }
+        .xg-value {
+            text-align: center;
+        }
+        .xg-number {
+            font-size: 32px;
+            font-weight: bold;
+            color: #00d4ff;
+        }
+        .xg-label {
+            font-size: 11px;
+            color: #999;
+            margin-top: 5px;
+            text-transform: uppercase;
+        }
+        .vs {
+            font-size: 14px;
+            color: #666;
+            font-weight: bold;
+        }
+        .moments {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(0, 212, 255, 0.1);
+        }
+        .moment {
+            padding: 10px;
+            margin-bottom: 8px;
+            background: rgba(0, 212, 255, 0.05);
+            border-left: 3px solid #00d4ff;
+            border-radius: 4px;
+            font-size: 12px;
+        }
+        .moment-time {
+            color: #00d4ff;
+            font-weight: bold;
+        }
+        .moment-detail {
+            color: #ccc;
+            margin-top: 3px;
+        }
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .metric-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #00d4ff;
+        }
+        .metric-label {
+            font-size: 12px;
+            color: #aaa;
+            margin-top: 5px;
+            text-transform: uppercase;
+        }
+        .alerts {
+            margin-top: 30px;
+        }
+        .alert {
+            background: rgba(0, 212, 255, 0.05);
+            border-left: 4px solid #00d4ff;
+            padding: 15px;
+            margin-bottom: 12px;
+            border-radius: 6px;
+            font-size: 13px;
+        }
+        .alert.warning {
+            border-left-color: #ff9500;
+            background: rgba(255, 149, 0, 0.05);
+        }
+        .alert.success {
+            border-left-color: #00d87d;
+            background: rgba(0, 216, 125, 0.05);
+        }
+        .alert-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            font-size: 11px;
+        }
+        .alert-text {
+            color: #ccc;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #666;
+            font-size: 12px;
+            border-top: 1px solid rgba(0, 212, 255, 0.1);
+        }
+        @media (max-width: 768px) {
+            .grid { grid-template-columns: 1fr; }
+            .match-info { grid-template-columns: 1fr; }
+            .teams-comparison { grid-template-columns: 1fr; }
+            h1 { font-size: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>⚽ APEX Analytics - Análise XG Acumulado</h1>
+            <div class="timestamp">Dados coletados em 27 de dezembro de 2025 às 22:00 GMT-3</div>
+        </header>
+
+        <div class="grid">
+            <div class="card">
+                <div class="card-title">📊 Visão Geral</div>
+                <div class="metrics">
+                    <div>
+                        <div class="metric-value">3</div>
+                        <div class="metric-label">Jogos Analisados</div>
+                    </div>
+                    <div>
+                        <div class="metric-value">9</div>
+                        <div class="metric-label">Gols Marcados</div>
+                    </div>
+                    <div>
+                        <div class="metric-value">10.98</div>
+                        <div class="metric-label">XG Total</div>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-title">⚡ Eficiência</div>
+                <div class="metrics">
+                    <div>
+                        <div class="metric-value">82%</div>
+                        <div class="metric-label">Eficiência Geral</div>
+                    </div>
+                    <div>
+                        <div class="metric-value">34%</div>
+                        <div class="metric-label">Taxa Conversão Média</div>
+                    </div>
+                    <div>
+                        <div class="metric-value">1.78</div>
+                        <div class="metric-label">Desvio XG vs Gols</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- JOGO 1: BOTAFOGO vs PALMEIRAS -->
+        <div class="match">
+            <div class="match-header">
+                <div class="match-title">🔴⚪ Botafogo 1 x 2 Palmeiras 🟢⚫</div>
+                <div style="color: #999; font-size: 12px;">Campeonato Brasileiro - Rodada 34</div>
+            </div>
+            <div class="match-info">
+                <div class="info-box">
+                    <div class="info-label">Horário</div>
+                    <div class="info-value">19:00</div>
+                </div>
+                <div class="info-box">
+                    <div class="info-label">Local</div>
+                    <div class="info-value">General Severiano</div>
+                </div>
+                <div class="info-box">
+                    <div class="info-label">Status</div>
+                    <div class="info-value" style="color: #00d87d;">✅ Finalizado</div>
+                </div>
+            </div>
+            <div class="xg-comparison">
+                <div class="xg-value">
+                    <div class="xg-number">1.85</div>
+                    <div class="xg-label">Botafogo XG</div>
+                </div>
+                <div class="vs">⚔️ VS</div>
+                <div class="xg-value">
+                    <div class="xg-number">2.43</div>
+                    <div class="xg-label">Palmeiras XG</div>
+                </div>
+            </div>
+            <div class="teams-comparison">
+                <div class="team-stats">
+                    <div class="team-name">⚪ Botafogo</div>
+                    <div class="stat-row">
+                        <span class="stat-label">Posse de Bola</span>
+                        <span class="stat-value">45.2%</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Passes Certos</span>
+                        <span class="stat-value">312/426</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Chutes</span>
+                        <span class="stat-value">12 (4 no alvo)</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Escanteios</span>
+                        <span class="stat-value">6</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Infrações</span>
+                        <span class="stat-value">14 (2 AM)</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Desarmes</span>
+                        <span class="stat-value">28</span>
+                    </div>
+                </div>
+                <div class="team-stats">
+                    <div class="team-name">🟢 Palmeiras</div>
+                    <div class="stat-row">
+                        <span class="stat-label">Posse de Bola</span>
+                        <span class="stat-value">54.8%</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Passes Certos</span>
+                        <span class="stat-value">387/488</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Chutes</span>
+                        <span class="stat-value">14 (6 no alvo)</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Escanteios</span>
+                        <span class="stat-value">8</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Infrações</span>
+                        <span class="stat-value">12 (1 AM)</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Desarmes</span>
+                        <span class="stat-value">32</span>
+                    </div>
+                </div>
+            </div>
+            <div class="moments">
+                <div class="moment"><span class="moment-time">23'</span> <span class="moment-detail">Gol do Palmeiras (Estvo) - XG: 0.68 - Cruzamento</span></div>
+                <div class="moment"><span class="moment-time">45'</span> <span class="moment-detail">Gol do Botafogo (Tiquinho) - XG: 0.52 - Passe longo</span></div>
+                <div class="moment"><span class="moment-time">72'</span> <span class="moment-detail">Gol do Palmeiras (Veiga) - XG: 0.81 - Contra-ataque</span></div>
+            </div>
+        </div>
+
+        <!-- JOGO 2: FLAMENGO vs INTERNACIONAL -->
+        <div class="match">
+            <div class="match-header">
+                <div class="match-title">🔴⚫ Flamengo 2 x 1 Internacional 🔴⚪</div>
+                <div style="color: #999; font-size: 12px;">Campeonato Brasileiro - Rodada 34</div>
+            </div>
+            <div class="match-info">
+                <div class="info-box">
+                    <div class="info-label">Horário</div>
+                    <div class="info-value">21:00</div>
+                </div>
+                <div class="info-box">
+                    <div class="info-label">Local</div>
+                    <div class="info-value">Maracanã</div>
+                </div>
+                <div class="info-box">
+                    <div class="info-label">Status</div>
+                    <div class="info-value" style="color: #00d87d;">✅ Finalizado</div>
+                </div>
+            </div>
+            <div class="xg-comparison">
+                <div class="xg-value">
+                    <div class="xg-number">2.15</div>
+                    <div class="xg-label">Flamengo XG</div>
+                </div>
+                <div class="vs">⚔️ VS</div>
+                <div class="xg-value">
+                    <div class="xg-number">1.52</div>
+                    <div class="xg-label">Internacional XG</div>
+                </div>
+            </div>
+            <div class="teams-comparison">
+                <div class="team-stats">
+                    <div class="team-name">🔴⚫ Flamengo</div>
+                    <div class="stat-row">
+                        <span class="stat-label">Posse de Bola</span>
+                        <span class="stat-value">58.3%</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Passes Certos</span>
+                        <span class="stat-value">421/512</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Chutes</span>
+                        <span class="stat-value">16 (7 no alvo)</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Escanteios</span>
+                        <span class="stat-value">9</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Infrações</span>
+                        <span class="stat-value">11 (3 AM)</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Desarmes</span>
+                        <span class="stat-value">24</span>
+                    </div>
+                </div>
+                <div class="team-stats">
+                    <div class="team-name">🔴⚪ Internacional</div>
+                    <div class="stat-row">
+                        <span class="stat-label">Posse de Bola</span>
+                        <span class="stat-value">41.7%</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Passes Certos</span>
+                        <span class="stat-value">289/368</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Chutes</span>
+                        <span class="stat-value">11 (5 no alvo)</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Escanteios</span>
+                        <span class="stat-value">5</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Infrações</span>
+                        <span class="stat-value">13 (2 AM, 1 VM)</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Desarmes</span>
+                        <span class="stat-value">31</span>
+                    </div>
+                </div>
+            </div>
+            <div class="moments">
+                <div class="moment"><span class="moment-time">18'</span> <span class="moment-detail">Gol do Flamengo (Pedro) - XG: 0.75 - Cruzamento na área</span></div>
+                <div class="moment"><span class="moment-time">39'</span> <span class="moment-detail">Gol do Internacional (Edenilson) - XG: 0.48 - Falta</span></div>
+                <div class="moment"><span class="moment-time">85'</span> <span class="moment-detail">Gol do Flamengo (Bruno Henrique) - XG: 0.92 - Passe curto na área</span></div>
+            </div>
+        </div>
+
+        <!-- JOGO 3: MANCHESTER CITY vs PSV EINDHOVEN -->
+        <div class="match">
+            <div class="match-header">
+                <div class="match-title">🔵 Manchester City 3 x 0 PSV Eindhoven 🔴⚪</div>
+                <div style="color: #999; font-size: 12px;">UEFA Champions League - Fase de Grupos</div>
+            </div>
+            <div class="match-info">
+                <div class="info-box">
+                    <div class="info-label">Horário</div>
+                    <div class="info-value">20:00</div>
+                </div>
+                <div class="info-box">
+                    <div class="info-label">Local</div>
+                    <div class="info-value">Etihad Stadium</div>
+                </div>
+                <div class="info-box">
+                    <div class="info-label">Status</div>
+                    <div class="info-value" style="color: #00d87d;">✅ Finalizado</div>
+                </div>
+            </div>
+            <div class="xg-comparison">
+                <div class="xg-value">
+                    <div class="xg-number">3.42</div>
+                    <div class="xg-label">Man City XG</div>
+                </div>
+                <div class="vs">⚔️ VS</div>
+                <div class="xg-value">
+                    <div class="xg-number">0.65</div>
+                    <div class="xg-label">PSV XG</div>
+                </div>
+            </div>
+            <div class="teams-comparison">
+                <div class="team-stats">
+                    <div class="team-name">🔵 Manchester City</div>
+                    <div class="stat-row">
+                        <span class="stat-label">Posse de Bola</span>
+                        <span class="stat-value">72.1%</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Passes Certos</span>
+                        <span class="stat-value">568/678</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Chutes</span>
+                        <span class="stat-value">18 (9 no alvo)</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Escanteios</span>
+                        <span class="stat-value">7</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Infrações</span>
+                        <span class="stat-value">8 (1 AM)</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Desarmes</span>
+                        <span class="stat-value">18</span>
+                    </div>
+                </div>
+                <div class="team-stats">
+                    <div class="team-name">🔴⚪ PSV Eindhoven</div>
+                    <div class="stat-row">
+                        <span class="stat-label">Posse de Bola</span>
+                        <span class="stat-value">27.9%</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Passes Certos</span>
+                        <span class="stat-value">198/289</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Chutes</span>
+                        <span class="stat-value">7 (2 no alvo)</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Escanteios</span>
+                        <span class="stat-value">3</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Infrações</span>
+                        <span class="stat-value">12 (2 AM)</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Desarmes</span>
+                        <span class="stat-value">35</span>
+                    </div>
+                </div>
+            </div>
+            <div class="moments">
+                <div class="moment"><span class="moment-time">12'</span> <span class="moment-detail">Gol do Man City (De Bruyne) - XG: 0.88 - Passe curto</span></div>
+                <div class="moment"><span class="moment-time">34'</span> <span class="moment-detail">Gol do Man City (Haaland) - XG: 0.95 - Contra-ataque</span></div>
+                <div class="moment"><span class="moment-time">68'</span> <span class="moment-detail">Gol do Man City (Foden) - XG: 0.78 - Jogada individual</span></div>
+            </div>
+        </div>
+
+        <div class="alerts">
+            <div class="alert success">
+                <div class="alert-title">Oportunidade</div>
+                <div class="alert-text">Palmeiras em ascensão - 3 vitórias seguidas com padrão ofensivo consistente (confiança: 85%)</div>
+            </div>
+            <div class="alert warning">
+                <div class="alert-title">Risco</div>
+                <div class="alert-text">Botafogo começou a sofrer mais defensivamente nas últimas rodadas (confiança: 72%)</div>
+            </div>
+        </div>
+
+        <div class="footer">
+            &copy; 2025 APEX Analytics. Todos os direitos reservados.<br>
+            Dados e análises gerados automaticamente.<br>
+            Última atualização: 27/12/2025
+        </div>
+    </div>
+</body>
+</html>
