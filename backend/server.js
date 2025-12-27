@@ -17,12 +17,16 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 const syncRoutes = require('./routes/api-sync');
 const imagesRoutes = require('./routes/api-images');
 const analysesRoutes = require('./routes/api-analyses');
+const perplexityRoutes = require('./routes/api-perplexity');
+const geminiRoutes = require('./routes/api-gemini');
 // const dailyTasksRoutes = require('./routes/api-daily-tasks'); // Crie este arquivo depois
 
 // Registro das rotas
 app.use('/api', syncRoutes);
 app.use('/api', imagesRoutes);
 app.use('/api', analysesRoutes);
+app.use('/api', perplexityRoutes);
+app.use('/api', geminiRoutes);
 // app.use('/api', dailyTasksRoutes); // Ative quando criar
 
 // Error handling global
