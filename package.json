@@ -1,0 +1,40 @@
+{
+  "name": "apex-ml-daily-tasks",
+  "version": "2.0.0",
+  "description": "Sistema APEX de análise de apostas esportivas com geração automática de relatórios HTML",
+  "main": "src/main.js",
+  "scripts": {
+    "analyze": "node src/main.js",
+    "test": "jest",
+    "generate-report": "node src/generators/html-report-generator.js",
+    "fetch-data": "node src/analyzer/data-fetcher.js",
+    "deploy": "bash scripts/deploy-reports.sh",
+    "dev": "nodemon src/main.js",
+    "lint": "eslint src/**/*.js"
+  },
+  "keywords": [
+    "sports-betting",
+    "analysis",
+    "apex-ml",
+    "football",
+    "automation"
+  ],
+  "author": "Johnathan Souza",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.6.0",
+    "dotenv": "^16.0.0",
+    "cheerio": "^1.0.0",
+    "date-fns": "^2.30.0",
+    "chalk": "^4.1.2"
+  },
+  "devDependencies": {
+    "jest": "^29.0.0",
+    "nodemon": "^3.0.0",
+    "eslint": "^8.50.0"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  }
+}
