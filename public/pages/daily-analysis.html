@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Análises do Dia - APEX Monitor</title>
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="stylesheet" href="../assets/css/responsive.css">
+</head>
+<body>
+  <header class="page-header">
+    <button class="btn-back" onclick="window.history.back()">&larr; VOLTAR</button>
+    <h1>Análises de <span id="analysis-date">--/--/----</span></h1>
+  </header>
+  <section class="day-summary">
+    <div class="summary-item"><strong>Total de Jogos:</strong> <span id="total-games">0</span></div>
+    <div class="summary-item"><strong>XG Acumulado:</strong> <span id="xg-total">0.00</span></div>
+    <div class="summary-item"><strong>Apostas Sugeridas:</strong> <span id="bets-suggested">0</span></div>
+    <div class="summary-item"><strong>Múltiplas Recomendadas:</strong> <span id="multiples">0</span></div>
+    <div class="summary-item"><strong>Bingos Identificados:</strong> <span id="bingos">0</span></div>
+  </section>
+  <section class="games-analysed">
+    <h2>Jogos Analisados</h2>
+    <div id="games-list" class="games-list"></div>
+  </section>
+  <section class="multiples-section">
+    <h2>Múltiplas Sugeridas</h2>
+    <div id="multiples-list" class="multiples-list"></div>
+  </section>
+  <section class="bingos-section">
+    <h2>Bingos de Apostas</h2>
+    <div id="bingos-list" class="bingos-list"></div>
+  </section>
+  <section class="news-section">
+    <h2>Notícias Relevantes</h2>
+    <div id="news-feed" class="news-feed"></div>
+    <div class="news-filter">
+      <label for="news-filter-input">Filtrar por time/liga:</label>
+      <input id="news-filter-input" type="text" placeholder="Digite o nome...">
+    </div>
+  </section>
+  <footer class="page-footer">
+    <button class="btn-back" onclick="window.history.back()">&larr; VOLTAR</button>
+  </footer>
+  <script src="../assets/js/app.js"></script>
+  <script src="../assets/js/navigation.js"></script>
+</body>
+</html>

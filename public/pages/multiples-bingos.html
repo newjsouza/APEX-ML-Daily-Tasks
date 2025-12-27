@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Múltiplas & Bingos - APEX Monitor</title>
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="stylesheet" href="../assets/css/responsive.css">
+</head>
+<body>
+  <header class="page-header">
+    <button class="btn-back" onclick="window.history.back()">&larr; VOLTAR</button>
+    <h1>Múltiplas & Bingos</h1>
+    <div class="filter-bar">
+      <label for="date-filter">Filtrar por data:</label>
+      <input type="date" id="date-filter">
+    </div>
+  </header>
+  <section class="multiples-summary">
+    <div class="summary-item"><strong>Total Apostado:</strong> <span id="total-multiples-bet">R$ 0,00</span></div>
+    <div class="summary-item"><strong>Retorno Total:</strong> <span id="total-multiples-return">R$ 0,00</span></div>
+    <div class="summary-item"><strong>Lucro/Prejuízo:</strong> <span id="multiples-profit-loss">R$ 0,00</span></div>
+    <div class="summary-item"><strong>ROI:</strong> <span id="multiples-roi">0%</span></div>
+    <div class="summary-item"><strong>Win Rate:</strong> <span id="multiples-winrate">0%</span></div>
+    <div class="summary-item"><strong>Acertos:</strong> <span id="multiples-wins">0</span></div>
+    <div class="summary-item"><strong>Erros:</strong> <span id="multiples-losses">0</span></div>
+    <div class="summary-item"><strong>Pendentes:</strong> <span id="multiples-pending">0</span></div>
+  </section>
+  <section class="multiples-table-section">
+    <h2>Múltiplas</h2>
+    <table class="multiples-table">
+      <thead>
+        <tr>
+          <th>Hora</th>
+          <th>Tipo</th>
+          <th>Composição</th>
+          <th>Odd Total</th>
+          <th>Valor</th>
+          <th>Resultado</th>
+          <th>Retorno</th>
+        </tr>
+      </thead>
+      <tbody id="multiples-table-body">
+        <!-- Linhas dinâmicas -->
+      </tbody>
+    </table>
+  </section>
+  <section class="bingos-table-section">
+    <h2>Bingos</h2>
+    <table class="bingos-table">
+      <thead>
+        <tr>
+          <th>Hora</th>
+          <th>Composição</th>
+          <th>Odd Total</th>
+          <th>Valor</th>
+          <th>Resultado</th>
+          <th>Retorno</th>
+        </tr>
+      </thead>
+      <tbody id="bingos-table-body">
+        <!-- Linhas dinâmicas -->
+      </tbody>
+    </table>
+  </section>
+  <section class="multiples-graphs">
+    <h2>Gráficos</h2>
+    <div id="multiples-roi-graph" class="graph"></div>
+    <div id="multiples-winrate-graph" class="graph"></div>
+    <div id="multiples-bankroll-graph" class="graph"></div>
+  </section>
+  <footer class="page-footer">
+    <button class="btn-back" onclick="window.history.back()">&larr; VOLTAR</button>
+  </footer>
+  <script src="../assets/js/app.js"></script>
+  <script src="../assets/js/navigation.js"></script>
+</body>
+</html>

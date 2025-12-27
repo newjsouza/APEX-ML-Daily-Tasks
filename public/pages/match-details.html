@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalhes do Jogo - APEX Monitor</title>
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="stylesheet" href="../assets/css/responsive.css">
+</head>
+<body>
+  <header class="page-header">
+    <button class="btn-back" onclick="window.history.back()">&larr; VOLTAR</button>
+    <h1 id="match-title">Time A vs Time B</h1>
+    <div class="match-meta">
+      <span id="match-date">--/--/----</span> |
+      <span id="match-time">--:--</span> |
+      <span id="match-league">Liga/Rodada</span>
+    </div>
+  </header>
+  <section class="stats-comparison">
+    <h2>Estatísticas Comparativas</h2>
+    <div class="stats-tables">
+      <table id="team-a-stats" class="team-stats-table"></table>
+      <table id="team-b-stats" class="team-stats-table"></table>
+    </div>
+  </section>
+  <section class="xg-analysis">
+    <h2>Análise XG</h2>
+    <div id="xg-chart" class="xg-chart"></div>
+    <div id="xg-interpretation" class="xg-interpretation"></div>
+    <div id="xg-history" class="xg-history"></div>
+  </section>
+  <section class="recommended-bets">
+    <h2>Apostas Recomendadas</h2>
+    <div id="bets-list" class="bets-list"></div>
+  </section>
+  <section class="teams-history">
+    <h2>Histórico dos Times</h2>
+    <div id="teams-history-list" class="teams-history-list"></div>
+  </section>
+  <section class="related-news">
+    <h2>Notícias Relacionadas</h2>
+    <div id="related-news-list" class="related-news-list"></div>
+  </section>
+  <footer class="page-footer">
+    <button class="btn-back" onclick="window.history.back()">&larr; VOLTAR</button>
+  </footer>
+  <script src="../assets/js/app.js"></script>
+  <script src="../assets/js/navigation.js"></script>
+</body>
+</html>

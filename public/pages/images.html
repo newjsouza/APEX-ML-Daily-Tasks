@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Imagens - APEX Monitor</title>
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="stylesheet" href="../assets/css/responsive.css">
+</head>
+<body>
+  <header class="page-header">
+    <button class="btn-back" onclick="window.history.back()">&larr; VOLTAR</button>
+    <h1>Imagens</h1>
+    <div class="upload-bar">
+      <label for="image-upload">Enviar nova imagem:</label>
+      <input type="file" id="image-upload" accept="image/*">
+      <button id="upload-btn">Upload</button>
+    </div>
+  </header>
+  <section class="images-gallery-section">
+    <h2>Galeria de Imagens</h2>
+    <div id="images-gallery" class="images-gallery">
+      <!-- Imagens dinâmicas -->
+    </div>
+  </section>
+  <footer class="page-footer">
+    <button class="btn-back" onclick="window.history.back()">&larr; VOLTAR</button>
+  </footer>
+  <script src="../assets/js/app.js"></script>
+  <script src="../assets/js/navigation.js"></script>
+  <script>
+    // Exemplo de manipulação de upload (integração real via JS separado)
+    document.getElementById('upload-btn').onclick = function() {
+      const fileInput = document.getElementById('image-upload');
+      if (fileInput.files.length === 0) {
+        alert('Selecione uma imagem para enviar.');
+        return;
+      }
+      // Aqui entraria a lógica de upload via API
+      alert('Upload simulado: ' + fileInput.files[0].name);
+    };
+  </script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Histórico de Apostas - APEX Monitor</title>
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="stylesheet" href="../assets/css/responsive.css">
+</head>
+<body>
+  <header class="page-header">
+    <button class="btn-back" onclick="window.history.back()">&larr; VOLTAR</button>
+    <h1>Histórico de Apostas</h1>
+    <div class="filter-bar">
+      <label for="date-filter">Filtrar por data:</label>
+      <input type="date" id="date-filter">
+    </div>
+  </header>
+  <section class="period-summary">
+    <div class="summary-item"><strong>Total Apostado:</strong> <span id="total-bet">R$ 0,00</span></div>
+    <div class="summary-item"><strong>Total de Retorno:</strong> <span id="total-return">R$ 0,00</span></div>
+    <div class="summary-item"><strong>Lucro/Prejuízo:</strong> <span id="profit-loss">R$ 0,00</span></div>
+    <div class="summary-item"><strong>ROI:</strong> <span id="roi">0%</span></div>
+    <div class="summary-item"><strong>Win Rate:</strong> <span id="winrate">0%</span></div>
+    <div class="summary-item"><strong>Wins:</strong> <span id="wins">0</span></div>
+    <div class="summary-item"><strong>Losses:</strong> <span id="losses">0</span></div>
+    <div class="summary-item"><strong>Pendentes:</strong> <span id="pending">0</span></div>
+  </section>
+  <section class="bets-table-section">
+    <h2>Apostas</h2>
+    <table class="bets-table">
+      <thead>
+        <tr>
+          <th>Hora</th>
+          <th>Tipo</th>
+          <th>Aposta</th>
+          <th>Odd</th>
+          <th>Valor</th>
+          <th>Resultado</th>
+          <th>Retorno</th>
+        </tr>
+      </thead>
+      <tbody id="bets-table-body">
+        <!-- Linhas dinâmicas -->
+      </tbody>
+    </table>
+  </section>
+  <section class="bets-graphs">
+    <h2>Gráficos</h2>
+    <div id="roi-graph" class="graph"></div>
+    <div id="winrate-graph" class="graph"></div>
+    <div id="bankroll-graph" class="graph"></div>
+  </section>
+  <section class="patterns-analysis">
+    <h2>Análise de Padrões</h2>
+    <div id="patterns-list" class="patterns-list"></div>
+  </section>
+  <footer class="page-footer">
+    <button class="btn-back" onclick="window.history.back()">&larr; VOLTAR</button>
+  </footer>
+  <script src="../assets/js/app.js"></script>
+  <script src="../assets/js/navigation.js"></script>
+</body>
+</html>

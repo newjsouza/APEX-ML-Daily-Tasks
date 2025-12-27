@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notícias - APEX Monitor</title>
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <link rel="stylesheet" href="../assets/css/responsive.css">
+</head>
+<body>
+  <header class="page-header">
+    <button class="btn-back" onclick="window.history.back()">&larr; VOLTAR</button>
+    <h1>Notícias</h1>
+    <div class="filter-bar">
+      <label for="news-date-filter">Filtrar por data:</label>
+      <input type="date" id="news-date-filter">
+    </div>
+  </header>
+  <section class="news-list-section">
+    <h2>Últimas Notícias</h2>
+    <ul id="news-list" class="news-list">
+      <!-- Notícias dinâmicas -->
+    </ul>
+  </section>
+  <section class="news-details-section" id="news-details-section" style="display:none;">
+    <button class="btn-back" onclick="showNewsList()">&larr; Voltar para lista</button>
+    <div id="news-details-content">
+      <!-- Detalhes dinâmicos da notícia -->
+    </div>
+  </section>
+  <footer class="page-footer">
+    <button class="btn-back" onclick="window.history.back()">&larr; VOLTAR</button>
+  </footer>
+  <script src="../assets/js/app.js"></script>
+  <script src="../assets/js/navigation.js"></script>
+  <script>
+    function showNewsList() {
+      document.getElementById('news-details-section').style.display = 'none';
+      document.querySelector('.news-list-section').style.display = 'block';
+    }
+  </script>
+</body>
+</html>

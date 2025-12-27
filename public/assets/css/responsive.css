@@ -1,0 +1,48 @@
+/* responsive.css - Ajustes responsivos para o APEX Monitor */
+
+@media (max-width: 1200px) {
+  section {
+    max-width: 98vw;
+  }
+}
+
+@media (max-width: 900px) {
+  .page-header, .page-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .summary-item {
+    margin-right: 12px;
+  }
+}
+
+@media (max-width: 700px) {
+  .bets-table, .multiples-table, .bingos-table {
+    font-size: 0.95rem;
+  }
+  .about-section ul {
+    margin-left: 12px;
+  }
+}
+
+@media (max-width: 600px) {
+  .page-header, .page-footer {
+    padding: 8px 6px;
+  }
+  section {
+    padding: 6px;
+    margin: 8px auto;
+  }
+  .summary-item {
+    font-size: 1rem;
+  }
+  .bets-table th, .bets-table td,
+  .multiples-table th, .multiples-table td,
+  .bingos-table th, .bingos-table td {
+    padding: 4px 6px;
+  }
+  .images-gallery img {
+    max-width: 98vw;
+  }
+}
